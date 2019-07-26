@@ -1,0 +1,33 @@
+
+<h3>Update Product</h3>
+    
+
+    <form (submit)="onSubmit()" >
+        <div class="form-group">
+            <label for="">Name </label>
+            <p class="small text-danger" *ngIf ="name.errors  && !name.pristine" >Must be 3 characters long</p>
+            <input type="text" class="form-control w-50" name="editProd.name" [(ngModel)]="editProd.name" value="{{editProd.name}}" required minlength= "3" #name="ngModel">
+            <p class="small text-danger">{{err?.name?.message}}</p>
+        </div>
+        <div class="form-group">
+            <label for="">Qty</label>
+            <p class="small text-danger" *ngIf ="qty.errors  && !qty.pristine" >Product must be greater than or equal to 0</p>
+            <input type="text" class="form-control w-50" name="editProd.qty" [(ngModel)]="editProd.qty" value="{{editProd.qty}}" required min= "0"  #qty="ngModel">
+            <p class="small text-danger">{{err?.qty?.message}}</p>
+        </div>
+        <div class="form-group">
+            <label for="">Price</label>
+            <p class="small text-danger" *ngIf ="price.errors  && !price.pristine" >Price must be greater than or equal to 0</p>
+            <input type="text" class="form-control w-50" name="editProd.price" [(ngModel)]="editProd.price" value="{{editProd.price}}" required min= "0" #price="ngModel">
+            <p class="small text-danger">{{err?.price?.message}}</p>
+        </div>
+        
+        <!-- <button *ngIf ="!name.errors && !qty.errors && !price.errors"   [routerLink] = "['']" class="btn btn-primary btn-sm" type="submit"  >Add Product</button>
+        <button disabled *ngIf ="name.errors || qty.errors || price.errors"  [routerLink] = "['']" style="color:grey" class="btn btn-primary btn-sm" type="submit"  >Add Product</button> -->
+
+        <button   [routerLink] = "['']" class="btn btn-primary btn-sm" type="submit"  >Add Product</button>
+
+
+        <a   class="btn btn-danger btn-sm text-white " [routerLink] ="['pets/edit', editProd._id]"  style="margin-left: 15px;">reset</a>
+    
+    </form>

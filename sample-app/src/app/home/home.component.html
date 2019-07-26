@@ -1,0 +1,38 @@
+<h1>Product List</h1>
+<a class="nav-link" [routerLink] = "['pets/new']" > <button class="navigate btn btn-warning">Add new product</button></a>
+
+
+
+
+<table class="table table-striped" *ngIf="pets">
+    <thead >
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Qty </th>
+        <th scope="col">Price</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let prod of pets">
+      <tr>
+        <td>{{prod.id}}</td>
+        <td>{{prod.name}}</td>
+        <td>{{prod.qty}}</td>
+        <td>${{prod.price}}</td>
+
+        <td>               
+            <a [routerLink] = "['pets/edit', prod._id]" class="btn btn-primary btn-sm" >Edit</a>
+            <a [routerLink] = "['pets/show', prod._id]" class="btn btn-danger btn-sm text-white" style="margin-left: 15px;">Details</a>
+
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+
+
+
+

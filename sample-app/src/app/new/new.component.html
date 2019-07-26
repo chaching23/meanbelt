@@ -1,0 +1,38 @@
+
+
+<h1>New Product</h1>
+
+<!-- <p class="small text-danger">{{err?.name?.message}}</p> -->
+
+
+
+<form (submit)="onSubmit()" name="myForm" >
+    <div class="form-group">
+        <label for=""> Name</label>
+        <p class="small text-danger" *ngIf ="name.errors  && !name.pristine" >Must be 3 characters long</p>
+        <input type="text" class="form-control w-50" name="newProd.name" [(ngModel)]="newProd.name" required minlength= "3" #name="ngModel">
+        <p class="small text-danger">{{err?.name?.message}}</p>
+    </div>
+    <div class="form-group">
+        <label for="">Qty</label>
+        <p class="small text-danger"  *ngIf ="qty.errors  " >Product must be greater than or equal to 0"</p>
+        <input type="text" class="form-control w-50" name="newProd.qty" [(ngModel)]="newProd.qty" required min= "0" #qty="ngModel">
+        <p class="small text-danger">{{err?.qty?.message}}</p>
+    </div>
+
+    <div class="form-group">
+        <label for="">Price</label>
+        <p class="small text-danger" *ngIf ="price.errors  " >Price must be greater than or equal to 0"</p>
+        <input type="text" class="form-control w-50" name="newProd.price" [(ngModel)]="newProd.price" required min= "0" #price="ngModel">
+        <p class="small text-danger">{{err?.price?.message}}</p>
+    </div>
+
+
+
+    <button *ngIf ="!name.errors && !qty.errors && !price.errors" class="btn btn-primary btn-sm" type="submit"  >Add Product</button>
+    <button disabled *ngIf ="name.errors || qty.errors || price.errors" style="color:grey" class="btn btn-primary btn-sm" type="submit"  >Add Product</button>
+    <a   class="btn btn-danger btn-sm text-white " [routerLink] = "['']" style="margin-left: 15px;">Cancel</a>
+
+
+
+</form>
